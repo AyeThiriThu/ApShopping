@@ -70,7 +70,7 @@ session_start();
               <!-- /.card-header -->
               <div class="card-body">
                 <div>
-                 <a href="add.php" type="button" class="btn btn-success">New Product</a> 
+                 <a href="product_add.php" type="button" class="btn btn-success">New Product</a> 
                 </div><br>
                 <table class="table table-bordered">
                   <thead>
@@ -79,7 +79,7 @@ session_start();
                       <th>name</th>
                       <th>description</th>
                       <th>category_name</th>
-                      <th>quantity</th>
+                      <th>In Stock</th>
                       <th>price</th>
                       <th>image</th>
                       <th style="width: 40px">Action</th>
@@ -94,24 +94,24 @@ session_start();
                         <tr>
                           <td><?php echo $i++; ?></td>
                           <td><?php echo escape($value['name']); ?></td>
-                          <td><?php echo escape(substr($value['description'],0,50)); ?></td>
+                          <td><?php echo escape(substr($value['description'],0,30)); ?></td>
                           <?php 
                             $stmtname=$pdo->prepare("SELECT * FROM categories WHERE id=:cat_id ");
                             $stmtname->bindValue(':cat_id',$value['category_id']);
                             $stmtname->execute();
-                            $name=$stmtname->fetchAll();
+                            $catname=$stmtname->fetchAll();
                           ?>
-                          <td><?php echo escape($name[0]['name']); ?></td>
+                          <td><?php echo escape($catname[0]['name']); ?></td>
                           <td><?php echo escape($value['quantity']); ?></td>
                           <td><?php echo escape($value['price']); ?></td>
-                          <td><img src="<td><?php echo escape($value['image']); ?></td>"></td>
+                          <td><img src="images/<?php echo escape($value['image']);?>" width="100px" height="100px"></td>
                           <td>
                           <div class="btn-group">
                             <div class="container">
-                              <a href="edit.php?id=<?php echo $value['id'];?>&pageno=<?php echo $pageno ?>" type="button" class="btn btn-warning">Edit</a>
+                              <a href="product_edit.php?id=<?php echo $value['id'];?>&pageno=<?php echo $pageno ?>" type="button" class="btn btn-warning">Edit</a>
                             </div>
                             <div class="container">
-                              <a href="delete.php?id=<?php echo $value['id'];?>&pageno=<?php echo $pageno ?>" type="button" class="btn btn-danger" onclick="return confirm ('Are you sure want to delete')">Delete</a>
+                              <a href="product_delete.php?id=<?php echo $value['id'];?>&pageno=<?php echo $pageno ?>" type="button" class="btn btn-danger" onclick="return confirm ('Are you sure want to delete')">Delete</a>
                             </div>
                           </div>
                           </td>

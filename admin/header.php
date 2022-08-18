@@ -31,15 +31,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
-        <?php 
+      <?php 
         $link=$_SERVER['PHP_SELF'];
         $link_array=explode('/',$link);
         $page=end($link_array);
          ?>
+      <?php 
+      if($page!="orders.php"){ ?>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
         <div class="navbar-search-block">
           <form class="form-inline" method="post" 
           <?php if($page=='product.php'):?>
@@ -64,6 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
             </div>
           </form>
+      <?php } ?>
         </div>
       </li>
 
@@ -110,7 +113,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="categories.php" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
-                Categories
+                Category
               </p>
             </a>
           </li>
@@ -119,6 +122,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <i class="nav-icon fas fa-user"></i>
               <p>
                 User
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="orders.php" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Order
               </p>
             </a>
           </li>
