@@ -20,8 +20,6 @@ if(empty($_SESSION['csrf_token'])){
 	}
 }
 
-
-
 // Escape html for output for xss attack
 
 function escape($html){

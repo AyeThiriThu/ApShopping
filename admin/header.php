@@ -37,14 +37,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $page=end($link_array);
          ?>
       <?php 
-      if($page!="orders.php"){ ?>
+      if($page=="index.php" || $page=="categories.php" || $page=="users.php"){ ?>
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
           <i class="fas fa-search"></i>
         </a>
         <div class="navbar-search-block">
           <form class="form-inline" method="post" 
-          <?php if($page=='product.php'):?>
+          <?php if($page=='index.php'):?>
             action="index.php"
           <?php elseif ($page=='categories.php'): ?>
             action="categories.php"
